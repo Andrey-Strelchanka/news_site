@@ -28,6 +28,11 @@ services:
       context: php
     volumes:
       - ./app:/var/www/app
+      - ./php/config/php.ini:/usr/local/etc/php/php.ini
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      PHP_IDE_CONFIG: "serverName=NewsSite"
     depends_on:
       - database
     networks:
