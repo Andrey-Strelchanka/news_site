@@ -1,9 +1,9 @@
 version: '3.8'
-name: your-project-name
+name: news-site
 
 services:
   database:
-    container_name: your-project-name-database
+    container_name: news-site-database
     restart: unless-stopped
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
@@ -19,10 +19,10 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     networks:
-      - your-project-name
+      - news-site
 
   app:
-    container_name: your-project-name-app
+    container_name: news-site-app
     restart: unless-stopped
     build:
       context: php
@@ -31,10 +31,10 @@ services:
     depends_on:
       - database
     networks:
-      - your-project-name
+      - news-site
 
   nginx:
-    container_name: your-project-name-nginx
+    container_name: news-site-nginx
     restart: unless-stopped
     image: nginx:stable-alpine
     ports:
@@ -46,8 +46,8 @@ services:
       - app
       - database
     networks:
-      - your-project-name
+      - news-site
 
 networks:
-  your-project-name:
+  news-site:
     driver: bridge
