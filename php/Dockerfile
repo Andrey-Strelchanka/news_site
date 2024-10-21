@@ -1,6 +1,6 @@
 FROM php:8.1-fpm
 
-LABEL authors="antonmiroshnikov"
+LABEL authors="andreystrelchanka"
 
 RUN apt update \
     && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
